@@ -8,29 +8,6 @@ namespace :docker do
     end
   end
 
-  desc 'Run Nginx'
-  task :start_nginx do
-    on roles(:web) do
-      within shared_path do
-        nginx_status_command = "docker container inspect -f '{{.State.Running}}' nginx &> /dev/null"
-
-        if test("#{nginx_status_command}; [ \"$?\" -ne 0 ]")
-          execute(
-            :docker,
-            'create',
-            '--name nginx',
-            '--network=backend',
-            '--publish 8080:80',
-            '--volume /var/run/docker.sock:/tmp/docker.sock:Z',
-            'jwilder/nginx-proxy'
-          )
-
-          execute :docker, 'start', 'nginx'
-        end
-      end
-    end
-  end
-
   desc 'Create required volumes'
   task :create_volumes do
     on roles(:web) do
