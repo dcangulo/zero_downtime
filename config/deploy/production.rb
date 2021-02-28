@@ -5,4 +5,4 @@ set :branch, 'master'
 
 set :deploy_to, '~/www/zero_downtime'
 
-server 'localhost', roles: %w[web], primary: true
+role :web, ['deploy@159.89.204.113']

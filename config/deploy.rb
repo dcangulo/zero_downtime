@@ -1,7 +1,7 @@
 # config/deploy.rb
 
 set :application, 'zero_downtime'
-set :repo_url, 'git@github.com:AliSepehri/zero_downtime.git'
+set :repo_url, 'git@github.com:dcangulo/zero_downtime.git'
 
 namespace :deploy do
   after :published, 'docker:create_network'

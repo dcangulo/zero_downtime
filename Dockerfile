@@ -1,5 +1,7 @@
 FROM ruby:2.7.1
 
+RUN gem install bundler
+
 WORKDIR /var/www/app
 
 COPY Gemfile Gemfile.lock ./
