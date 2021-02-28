@@ -49,6 +49,7 @@ namespace :docker do
           '--health-cmd="curl -f localhost:3000/ping"',
           '--health-interval=10s',
           '--health-timeout=1s',
+          '--publish 3000:3000',
           'zero-downtime'
         )
         execute :docker, 'start', 'zero-downtime-app-new'
